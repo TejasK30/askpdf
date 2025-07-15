@@ -1,0 +1,35 @@
+import type { Metadata } from "next"
+import { Inter } from "next/font/google"
+import "./globals.css"
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
+import { AppSidebar } from "@/components/app-sidebar"
+
+const inter = Inter({
+  variable: "--font-inter-sans",
+  subsets: ["latin"],
+})
+
+export const metadata: Metadata = {
+  title: "AskPDF",
+  description: "Chat with pdf",
+}
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode
+}>) {
+  return (
+    <html lang="en">
+      <body className={`${inter.className} antialiased`}>
+        <SidebarProvider>
+          <AppSidebar />
+          <main className="flex w-full min-h-screen">
+            <SidebarTrigger />
+            {children}
+          </main>
+        </SidebarProvider>
+      </body>
+    </html>
+  )
+}

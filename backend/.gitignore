@@ -1,0 +1,17 @@
+# Node modules
+node_modules/
+
+# TypeScript build output
+dist/
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# Local environment variables
+.env
+
+# Uploaded files (temp or raw)
+uploads/
+
