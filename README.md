@@ -37,9 +37,9 @@ askpdf is a Retrieval-Augmented Generation (RAG) application that enables users 
 
 ### Installation
 
+```sh
 Clone the repository and install dependencies for both backend and frontend:
 
-````sh
 cd frontend
 pnpm install
 cd ../backend
@@ -56,7 +56,7 @@ pnpm dev
 pnpm worker # to run the worker that handles pdf processing
 ````
 
-The frontend will be at `http://localhost:5000`
+The backend will be at `http://localhost:5000`
 
 #### Frontend
 
