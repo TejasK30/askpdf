@@ -19,6 +19,10 @@ export const chat = async (req: Request, res: Response): Promise<any> => {
     // Extract the user query
     const { userQuery } = req.body
 
+    if (!userQuery || typeof userQuery !== "string") {
+      return res.status(400).json({ message: "Invalid user query." })
+    }
+
     // Initialize Gemini model
     const model = new ChatGoogleGenerativeAI({
       apiKey: process.env.GOOGLE_API_KEY!,
