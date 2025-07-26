@@ -15,10 +15,10 @@ export default function ChatInputForm({
   onSubmit,
 }: Props) {
   return (
-    <div className="py-2">
+    <div className="py-2 flex justify-center h-20">
       <form
         onSubmit={onSubmit}
-        className="flex items-center gap-3 rounded-full px-4 py-1 bg-gray-100 border-2 border-indigo-400"
+        className="flex w-[60vw] items-center gap-3 rounded-full py-1 px-2 bg-gray-100 border-2 border-indigo-400"
       >
         <Input
           placeholder="Ask something about your PDF..."

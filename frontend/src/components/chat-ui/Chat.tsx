@@ -11,6 +11,7 @@ const Chat = () => {
     role: "user",
     message: "",
   })
+
   const [messages, setMessages] = useState<Message[]>([])
 
   const messagesEndRef = useRef<HTMLDivElement | null>(null)
@@ -20,23 +21,21 @@ const Chat = () => {
 
     if (!message.message.trim()) return
 
-    setMessages((prev) => [...prev, message])
+    const userMessage = message.message
+
+    setMessages((prev) => [...prev, { role: "user", message: userMessage }])
     setMessage({ role: "user", message: "" })
 
     try {
       const res = await fetch("http://localhost:5000/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ prompt: message.message }),
+        body: JSON.stringify({ userQuery: userMessage }),
       })
 
       const data = await res.json()
 
-      setMessages((prev) => [
-        ...prev,
-        { role: "user", message: message.message },
-        { role: "system", message: data.reply },
-      ])
+      setMessages((prev) => [...prev, { role: "system", message: data }])
     } catch (err) {
       console.error("Error fetching reply:", err)
       setMessages((prev) => [

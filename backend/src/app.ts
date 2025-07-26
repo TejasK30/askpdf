@@ -1,14 +1,10 @@
-import "dotenv/config"
 import cors from "cors"
+import "dotenv/config"
 import express, { Request, Response } from "express"
 import multer from "multer"
-import { fileUploadController } from "./controllers/upload.controller"
-import { ChatGoogleGenerativeAI } from "@langchain/google-genai"
-import { getGeminiEmbeddings } from "./utils/embeddings"
-import { getVectoreStore } from "./utils/vectorstore"
-import { Queue } from "bullmq"
 import { storage } from "./config/fileupload.config"
 import { chat } from "./controllers/chat.controller"
+import { fileUploadController } from "./controllers/upload.controller"
 
 const app = express()
 
