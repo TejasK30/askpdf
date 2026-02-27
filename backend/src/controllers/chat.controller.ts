@@ -26,7 +26,7 @@ export const chat = async (req: Request, res: Response): Promise<any> => {
     // Initialize Gemini model
     const model = new ChatGoogleGenerativeAI({
       apiKey: process.env.GOOGLE_API_KEY!,
-      model: "gemini-2.0-flash",
+      model: "gemini-2.5-flash",
     })
 
     // Get embeddings

@@ -38,7 +38,7 @@ const Chat = () => {
 
       const data = await res.json()
 
-      setMessages((prev) => [...prev, { role: "system", message: data }])
+      setMessages((prev) => [...prev, { role: "system", message: data.answer }])
     } catch (err) {
       setLoading(false)
       console.error("Error fetching reply:", err)
