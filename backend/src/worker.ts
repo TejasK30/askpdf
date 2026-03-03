@@ -9,8 +9,6 @@ const worker = new Worker(
     try {
       const data = job.data
 
-      console.log("Received file path: ", data.path)
-
       // give path to PDFLoader and load the PDF
       const loader = new PDFLoader(data.path)
 
@@ -35,5 +33,5 @@ const worker = new Worker(
       host: "localhost",
       port: 6379,
     },
-  }
+  },
 )

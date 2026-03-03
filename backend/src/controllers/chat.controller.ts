@@ -26,7 +26,7 @@ export const chat = async (req: Request, res: Response): Promise<any> => {
     // Initialize Gemini model
     const model = new ChatGoogleGenerativeAI({
       apiKey: process.env.GOOGLE_API_KEY!,
-      model: "gemini-2.5-flash",
+      model: process.env.GEMINI_CHAT_MODEL!,
     })
 
     // Get embeddings
@@ -48,8 +48,21 @@ export const chat = async (req: Request, res: Response): Promise<any> => {
     const response = await model.invoke([
       [
         "system",
-        `You are a helpful AI assistant that answers questions using ONLY the following PDF context.
-        Context: ${context}`,
+        `You are an AI assistant that answers questions strictly based on the provided PDF context.
+
+        INSTRUCTIONS:
+        - Use ONLY the information from the provided context.
+        - Do NOT use outside knowledge.
+        - If the answer is not in the context, say:
+          "I could not find this information in the provided document."
+        - Be concise and accurate.
+        - If possible, quote or reference relevant parts of the context.
+        - Do not make up information.
+        - If the question is unclear, ask for clarification.
+
+        CONTEXT:
+        ${context.join("\n\n")}
+        `,
       ],
       ["user", userQuery],
     ])

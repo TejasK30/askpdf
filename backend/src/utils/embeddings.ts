@@ -4,6 +4,6 @@ import { GoogleGenerativeAIEmbeddings } from "@langchain/google-genai"
 export const getGeminiEmbeddings = () => {
   return new GoogleGenerativeAIEmbeddings({
     apiKey: process.env.GOOGLE_API_KEY!,
-    model: "gemini-embedding-001",
+    model: process.env.GEMINI_EMBEDDING_MODEL!,
   })
 }
